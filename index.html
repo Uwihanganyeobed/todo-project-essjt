@@ -234,10 +234,73 @@
                     const task = createTask(text);
                     todos.appendChild(task);
                     input.value = ''; // Clear input field
+                    updateCounters();
+
                 }
             })
         // ✅ CREATE: create a btn eventlistener Add new task when the "Add Task" button is clicked 
-            // Get and clean input
+            function createTask(text){
+
+                const box = document.createElement('div');
+                box.className = 'task-item';
+
+                const taskText = document.createElement('div');
+                taskText.className = 'task-text';
+                taskText.textContent = text;
+
+                const actions = document.createElement('div');
+                actions.className = 'task-actions';
+
+                const move = document.createElement('button');
+                move.className = 'move-btn';
+                move.innerHTML = '&#8594;'; // Arrow icon
+                move.onclick=()=>{
+                    if(box.parentElement===inProgress) completed.appendChild(box);
+                    else if (box.parentElement===completed) todos.appendChild(box);
+                    else if (box.parentElement===todos) inProgress.appendChild(box);
+                    else todos.appendChild(box);
+
+                    updateCounters()
+                }
+               
+
+
+                const edit = document.createElement('button')
+                edit.className='edit-btn'
+                edit.innerHTML='&#9998;'//;
+                edit.onclick=()=>{
+                    const newText=prompt('Enter new Text',taskText.textContent)
+                    if(newText) taskText.textContent=newText;
+                }
+
+                const del = document.createElement('button')
+                del.className='del-btn'
+                del.innerHTML='&#10006'
+                del.onclick=()=>{
+                    box.remove();
+                    updateCounters();
+                }
+                
+                actions.appendChild(del);
+                actions.appendChild(edit);
+                actions.appendChild(move);
+
+                box.appendChild(actions);
+                box.appendChild(taskText);
+
+                return box;
+
+            }    
+        
+
+            function updateCounters(){
+                const count = parent=>parent.querySelectorAll('.task-item').length;
+                todoCount.textContent=count(todos);
+                inProgressCount.textContent=count(inProgress)
+                completedCount.textContent=count(completed)
+                totalCount.textContent= count(todos)+count(inProgress)+count(completed)
+            }
+        // Get and clean input
             // Create the task element
             // Add it to the "To Do" section
             // Clear input field
