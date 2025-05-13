@@ -291,77 +291,13 @@
                 return box;
 
             }    
-        
-
             function updateCounters(){
-                const count = parent=>parent.querySelectorAll('.task-item').length;
+                const count = parent=>parent.querySelectorAll('task-item').length;
                 todoCount.textContent=count(todos);
                 inProgressCount.textContent=count(inProgress)
                 completedCount.textContent=count(completed)
                 totalCount.textContent= count(todos)+count(inProgress)+count(completed)
             }
-        // Get and clean input
-            // Create the task element
-            // Add it to the "To Do" section
-            // Clear input field
-        // Update task stats
-            //...........................................................................................
-
-
-        // Also add an event listener to input allow adding a task with Enter key
-            // Trigger button click on Enter
-            //...........................................................................................
-
-
-
-        // 📦 Function to CREATE a task element and attach actions to it (text in params)
-
-            // create(box)Main container for the task and give it a classname
-            // Task text container with className and adding text to its content
-            // Action buttons container and give it a className
-            //...........................................................................................
-
-
-
-        // 🔁 UPDATE: Move task to next stage (To Do → In Progress → Completed → To Do)
-
-            //create a move button element, give it a className and textcontent of arrow icon
-            //give it an onclick and check if box.prentElement == todo then append childs then after all update counters
-            //'&#8594;'; // Arrow icon
-            // To Do → In Progress
-            // In Progress → Completed
-            // Completed → To Do (loop back)
-            //...........................................................................................
-
-
-        // ✏️ UPDATE: Edit task text, same  then prompt user by adding textcontent to content in box then add new text to it
-            // "&#9998;Pencil icon
-            // Prompt for new text
-            // If user entered something, update the text
-            //...........................................................................................
-
-
-        // ❌ DELETE: Remove task from the board, by removing box and update counters
-            //'&#10006;'; // X icon
-            // Remove the entire task box
-            // Update stats after deletion
-            //...........................................................................................
-
-        // Add action buttons to action container(append 3 childs to actions)
-            // Assemble the task box(append childs to box)
-            // Return the created task box element
-            //...........................................................................................
-        
-
-        // 📊 Function to count tasks in each section and update UI
-                //create count with parent geting queryselector for all tasl-item in card then .length
-            //add textcontents to counters using counter(task)
-                // Count tasks in "To Do"
-                // Count tasks in "In Progress"
-                // Count tasks in "Completed"
-                // Total tasks
-            //...........................................................................................
-        
 </script>
 </body>
 </html>
